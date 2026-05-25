@@ -1,0 +1,2416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Adi Bespoke Woodworking — Handcrafted Cabinetry & Joinery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* COLOUR THEORY — split-complementary from the photography:
+       Primary:    Amber-linen #F7F3EC  — dominant hue of oak & walnut grain
+       Analogous:  Espresso   #1A1714  — deep wood shadow, near-black warm
+       Complement: Cool slate #ECF0F5  — hsl(212°) opposite amber on the wheel
+       Accent:     Raw sienna #B8965A  — wood resin; bridges the warm/cool split */
+    --warm-white: #F7F3EC;
+    --warm-off: #EDE8DF;
+    --cool-slate: #ECF0F5;
+    --ink: #1A1714;
+    --ink-secondary: #5A5249;
+    --ink-muted: #9B9089;
+    --gold: #B8965A;
+    --gold-light: #D4B07A;
+    --border: rgba(26,23,20,0.1);
+    --border-light: rgba(26,23,20,0.06);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Figtree', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--warm-white);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 64px;
+    background: rgba(250,248,245,0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-light);
+    transition: border-color 0.3s;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-cta {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 9px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .nav-cta:hover {
+    background: var(--ink);
+    color: var(--warm-white);
+    border-color: var(--ink);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 48px 80px;
+    padding-top: 120px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(52px, 6vw, 86px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-body {
+    font-size: 15px;
+    color: var(--ink-secondary);
+    line-height: 1.75;
+    max-width: 360px;
+    margin-bottom: 44px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ink);
+    color: var(--warm-white);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--ink); }
+
+  .btn-arrow {
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: currentColor;
+    position: relative;
+    vertical-align: middle;
+    transition: width 0.2s;
+  }
+
+  .btn-secondary:hover .btn-arrow { width: 28px; }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transform: scale(1.04);
+    transition: transform 6s ease;
+  }
+
+  .hero-right:hover img { transform: scale(1.0); }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(250,248,245,0.15) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    background: rgba(250,248,245,0.96);
+    border: 1px solid var(--border-light);
+    padding: 16px 20px;
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-badge-num {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .hero-badge-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* ─── STATS STRIP ─── */
+  .stats-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stat-item {
+    padding: 40px 48px 36px;
+    border-right: 1px solid var(--border);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-slot {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+  }
+
+  .stat-slot-num {
+    display: block;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .stat-suffix {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--gold);
+    align-self: flex-start;
+    margin-top: 4px;
+    margin-left: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stat-slot-num { transition: none; }
+  }
+
+  /* ─── SECTION LABEL ─── */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .section-label::before {
+    content: '//';
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+
+  /* ─── ABOUT SECTION ─── */
+  .about {
+    padding: 100px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    background: var(--cool-slate);
+    border-top: 1px solid rgba(140,160,185,0.18);
+    border-bottom: 1px solid rgba(140,160,185,0.18);
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-img-main {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-img-accent {
+    position: absolute;
+    bottom: -32px;
+    right: -32px;
+    width: 48%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 6px solid var(--warm-white);
+  }
+
+  .about-content { padding-left: 20px; }
+
+  .about-heading {
+    font-family: var(--serif);
+    font-size: clamp(36px, 3.5vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 28px;
+    color: var(--ink);
+  }
+
+  .about-heading em { font-style: italic; color: var(--gold); }
+
+  .about-body {
+    font-size: 15px;
+    color: var(--ink-secondary);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .about-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--border);
+    margin: 32px 0;
+  }
+
+  .about-signature {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-style: italic;
+    color: var(--ink-muted);
+  }
+
+  /* ─── SERVICES SECTION ─── */
+  .services {
+    background: var(--ink);
+    padding: 100px 48px;
+    color: var(--warm-white);
+  }
+
+  .services-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 64px;
+  }
+
+  .services-heading {
+    font-family: var(--serif);
+    font-size: clamp(36px, 3.5vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    max-width: 400px;
+    color: var(--warm-white);
+  }
+
+  .services-heading em { font-style: italic; color: var(--gold-light); }
+
+  .services-intro {
+    max-width: 280px;
+    font-size: 14px;
+    color: rgba(250,248,245,0.55);
+    line-height: 1.75;
+    text-align: right;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(250,248,245,0.1);
+  }
+
+  .service-item {
+    padding: 44px 40px;
+    border-right: 1px solid rgba(250,248,245,0.1);
+    border-bottom: 1px solid rgba(250,248,245,0.1);
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .service-item:nth-child(3n) { border-right: none; }
+
+  .service-item:hover { background: rgba(184,150,90,0.07); }
+
+  .service-num {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    opacity: 0.7;
+  }
+
+  .service-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--warm-white);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .service-desc {
+    font-size: 13px;
+    color: rgba(250,248,245,0.5);
+    line-height: 1.75;
+  }
+
+  /* ─── PORTFOLIO SECTION ─── */
+  .portfolio {
+    padding: 100px 48px;
+  }
+
+  .portfolio-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 56px;
+  }
+
+  .portfolio-heading {
+    font-family: var(--serif);
+    font-size: clamp(36px, 3.5vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  .portfolio-heading em { font-style: italic; color: var(--gold); }
+
+  .portfolio-filter {
+    display: flex;
+    gap: 4px;
+  }
+
+  .filter-btn {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--sans);
+  }
+
+  .filter-btn.active,
+  .filter-btn:hover {
+    background: var(--ink);
+    color: var(--warm-white);
+    border-color: var(--ink);
+  }
+
+  /* ─── EXPANDABLE CARDS ─── */
+  .cards {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  .card {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 100%;
+    cursor: pointer;
+    transition: flex 0.5s ease;
+    overflow: hidden;
+    position: relative;
+    will-change: flex;
+  }
+
+  .card:hover {
+    flex: 3;
+  }
+
+  .card a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    filter: grayscale(100%);
+    will-change: transform, filter;
+    background: linear-gradient(90deg, #2a2520 25%, #342e28 50%, #2a2520 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  .card:hover img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+  }
+
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,23,20,0.72) 0%, rgba(26,23,20,0.1) 50%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .card:hover::after { opacity: 1; }
+
+  .card-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(26,23,20,0.72);
+    color: var(--warm-white);
+    padding: 9px 16px;
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    z-index: 2;
+    border: 1px solid rgba(184,150,90,0.25);
+  }
+
+  .card:hover .card-title {
+    background: rgba(184,150,90,0.92);
+    color: var(--ink);
+    transform: translate(-50%, -50%) scale(1.06);
+    border-color: transparent;
+  }
+
+  .card-desc {
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    transform: translateY(100%);
+    transition: transform 0.35s ease;
+    padding: 20px 22px 22px;
+    color: var(--warm-white);
+    font-size: 13px;
+    line-height: 1.65;
+    white-space: normal;
+    background: linear-gradient(to top, rgba(26,23,20,0.88) 60%, transparent);
+  }
+
+  .card-category {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .card:hover .card-desc { transform: translateY(0); }
+
+  .card a:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .card a:focus-visible img { filter: grayscale(0%); }
+
+  @media (max-width: 640px) {
+    .cards {
+      flex-direction: column;
+      height: auto;
+    }
+    .card {
+      flex: none;
+      width: 100%;
+      height: 240px;
+    }
+    .card::after { opacity: 1; }
+    .card-desc { transform: translateY(0); }
+    .card img { filter: grayscale(0%); animation: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card, .card img, .card-title, .card-desc, .card::after {
+      transition: none;
+    }
+    .card img { animation: none; }
+  }
+
+
+  /* ─── LOADER ─── */
+  .gallery-loader {
+    position: fixed;
+    inset: 0;
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 200;
+    pointer-events: none;
+  }
+
+  .gallery-loader-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 300;
+    color: var(--warm-white);
+    letter-spacing: 0.04em;
+  }
+
+  .gallery-loader-pct {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ─── GALLERY SCROLL SECTIONS ─── */
+  .gallery-wrapper {
+    background: var(--ink);
+    overflow-x: hidden;
+  }
+
+  .gallery-intro {
+    padding: 80px 48px 56px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .gallery-intro-inner {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .gallery-heading {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4vw, 58px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--warm-white);
+  }
+
+  .gallery-heading em { font-style: italic; color: var(--gold-light); }
+
+  .gallery-hint {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,241,236,0.35);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .gallery-hint::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  /* The scroll text band */
+  .demo-text {
+    padding: 0;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .demo-text .wrapper {
+    display: flex;
+    white-space: nowrap;
+  }
+
+  .demo-text .text {
+    font-family: var(--serif);
+    font-size: clamp(72px, 12vw, 140px);
+    font-weight: 300;
+    line-height: 1;
+    color: rgba(244,241,236,0.06);
+    letter-spacing: -0.02em;
+    padding: 12px 0;
+    user-select: none;
+  }
+
+  /* Horizontal scroll gallery rows */
+  .demo-gallery {
+    overflow: hidden;
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .demo-gallery .wrapper {
+    display: flex;
+    padding-left: 48px;
+  }
+
+  .demo-gallery li {
+    flex-shrink: 0;
+    width: clamp(340px, 42vw, 580px);
+    padding-right: 12px;
+    list-style: none;
+  }
+
+  .demo-gallery img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    display: block;
+    background: var(--warm-off);
+  }
+
+  .gallery-img-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,241,236,0.3);
+    font-weight: 500;
+    padding: 10px 0 14px;
+  }
+
+  /* ─── TESTIMONIAL TICKER ─── */
+  .ticker-section {
+    background: var(--warm-off);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 56px 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ticker-label {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+    margin-bottom: 36px;
+    padding: 0 48px;
+  }
+
+  .ticker-label::before { content: '// '; color: var(--gold); }
+
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker-scroll 42s linear infinite;
+    will-change: transform;
+  }
+
+  .ticker-section:hover .ticker-track { animation-play-state: paused; }
+
+  @keyframes ticker-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .ticker-set {
+    display: flex;
+    align-items: stretch;
+    flex-shrink: 0;
+  }
+
+  .ticker-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 0 52px;
+    border-right: 1px solid var(--border);
+    max-width: 460px;
+    flex-shrink: 0;
+  }
+
+  .ticker-quote-mark {
+    font-family: var(--serif);
+    font-size: 52px;
+    line-height: 0.8;
+    color: var(--gold-light);
+    font-weight: 300;
+    flex-shrink: 0;
+    margin-top: 4px;
+    opacity: 0.55;
+  }
+
+  .ticker-text {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-secondary);
+    line-height: 1.6;
+    white-space: normal;
+    margin-bottom: 12px;
+  }
+
+  .ticker-attribution {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .ticker-dash {
+    width: 18px;
+    height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .ticker-name {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .ticker-name span { color: var(--ink); }
+
+  .ticker-section::before,
+  .ticker-section::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .ticker-section::before {
+    left: 0;
+    background: linear-gradient(to right, var(--warm-off), transparent);
+  }
+
+  .ticker-section::after {
+    right: 0;
+    background: linear-gradient(to left, var(--warm-off), transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
+  }
+
+  /* ─── CTA / CONTACT SECTION ─── */
+  /* ─── CONTACT — LUMO-STYLE ─── */
+  .contact {
+    background: var(--warm-white);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Left panel — editorial headline + meta */
+  .contact-left {
+    padding: 100px 64px 80px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid var(--border-light);
+  }
+
+  .contact-heading {
+    font-family: var(--serif);
+    font-size: clamp(42px, 5vw, 76px);
+    font-weight: 300;
+    line-height: 1.02;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+
+  .contact-heading em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .contact-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .contact-meta-line {
+    font-size: 13px;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .contact-meta-line::before {
+    content: '';
+    width: 16px;
+    height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* Right panel — the form */
+  .contact-form {
+    padding: 100px 48px 80px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form-heading {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 56px;
+  }
+
+  /* Two-column name row */
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 0;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  /* Floating label above the underline */
+  label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+
+  .form-group:focus-within label {
+    color: var(--ink);
+  }
+
+  /* Underline-only inputs — Lumo style */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 0 0 14px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-bottom-color: var(--ink);
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: rgba(90,82,73,0.3);
+    font-family: var(--serif);
+    font-weight: 300;
+  }
+
+  /* Animated underline fill on focus */
+  .form-group::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  .form-group:focus-within::after {
+    width: 100%;
+  }
+
+  select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239B9089' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+    padding-right: 24px;
+  }
+
+  textarea {
+    resize: none;
+    min-height: 80px;
+    line-height: 1.6;
+  }
+
+  /* Submit — text link style, very Lumo */
+  .form-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink);
+    cursor: pointer;
+    margin-top: 8px;
+    position: relative;
+    transition: color 0.2s;
+  }
+
+  .form-submit::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--ink);
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), background 0.2s;
+  }
+
+  .form-submit:hover { color: var(--gold); }
+  .form-submit:hover::after {
+    background: var(--gold);
+    transform: scaleX(1.04);
+  }
+
+  .form-submit-arrow {
+    display: inline-flex;
+    align-items: center;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 14px;
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  .form-submit:hover .form-submit-arrow {
+    transform: translate(6px, 0);
+  }
+
+  .form-note {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 20px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── FOOTER ─── */
+  .site-footer {
+    background: var(--ink);
+    color: var(--warm-white);
+    padding: 64px 48px 40px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(250,248,245,0.1);
+    margin-bottom: 36px;
+  }
+
+  .footer-brand-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--warm-white);
+    margin-bottom: 14px;
+  }
+
+  .footer-brand-name span { color: var(--gold-light); }
+
+  .footer-tagline {
+    font-size: 13px;
+    color: rgba(250,248,245,0.45);
+    line-height: 1.7;
+    max-width: 220px;
+  }
+
+  .footer-col-title {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    font-weight: 500;
+    margin-bottom: 18px;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(250,248,245,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--warm-white); }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .copyright {
+    font-size: 12px;
+    color: rgba(250,248,245,0.3);
+  }
+
+  .author-name { color: rgba(250,248,245,0.5); }
+
+  .author-link {
+    color: var(--gold-light);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .author-link:hover { opacity: 1; }
+
+  .social-links {
+    display: flex;
+    gap: 8px;
+  }
+
+  .social-link {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(250,248,245,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .social-link:hover {
+    border-color: var(--gold-light);
+    background: rgba(212,176,122,0.1);
+  }
+
+  .social-link svg {
+    width: 14px;
+    height: 14px;
+    stroke: rgba(250,248,245,0.5);
+    fill: none;
+    stroke-width: 1.5;
+    transition: stroke 0.2s;
+  }
+
+  .social-link:hover svg { stroke: var(--gold-light); }
+
+  /* ─── PROCESS — HORIZONTAL SCROLL ─── */
+  .process {
+    background: var(--warm-off);
+    border-top: 1px solid rgba(140,160,185,0.22);
+  }
+
+  /* Outer wrapper — height controls how long the pin lasts */
+  .process-scroll-outer {
+    /* JS sets height dynamically based on step count */
+  }
+
+  /* The sticky panel — stays fixed in the viewport during scroll */
+  .process-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 48px;
+  }
+
+  .process-header {
+    flex-shrink: 0;
+    padding-bottom: 48px;
+  }
+
+  .process-heading {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+
+  .process-heading em { font-style: italic; color: var(--gold); }
+
+  .process-progress-bar {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 48px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .process-progress-fill {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    background: var(--gold);
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+
+  /* The horizontal track holding all step cards */
+  .process-steps-track {
+    display: flex;
+    gap: 20px;
+    will-change: transform;
+    flex-shrink: 0;
+  }
+
+  .process-step {
+    flex-shrink: 0;
+    width: 38vw;
+    min-width: 340px;
+    max-width: 480px;
+    background: var(--warm-white);
+    border: 1px solid var(--border-light);
+    padding: 36px 36px 32px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.4s, box-shadow 0.4s;
+  }
+
+  .process-step.is-active {
+    border-color: var(--gold);
+    box-shadow: 0 4px 32px rgba(184,150,90,0.1);
+  }
+
+  .step-dot {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    background: var(--warm-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--gold);
+    font-weight: 400;
+    transition: background 0.4s, border-color 0.4s, color 0.4s;
+    flex-shrink: 0;
+  }
+
+  .process-step.is-active .step-dot {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--warm-white);
+  }
+
+  .step-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .step-desc {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.75;
+    flex: 1;
+  }
+
+  .process-step-counter {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .process-step-counter span { color: var(--gold); }
+
+  /* ─── FORM SUCCESS STATE ─── */
+  .form-success {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    gap: 16px;
+  }
+
+  .success-icon {
+    width: 52px;
+    height: 52px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+  }
+
+  .success-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .success-heading {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  .success-body {
+    font-size: 14px;
+    color: var(--ink-muted);
+    max-width: 280px;
+    line-height: 1.7;
+  }
+
+  /* ─── INTERSECTION OBSERVER ANIMATIONS ─── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .fade-up:nth-child(2) { transition-delay: 0.1s; }
+  .fade-up:nth-child(3) { transition-delay: 0.2s; }
+  .fade-up:nth-child(4) { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="#" class="nav-logo">Adi<span>.</span>Bespoke</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-tag">Bespoke Woodworking</span>
+    <h1 class="hero-title">
+      Crafted by<br />hand. Built to<br /><em>last a lifetime.</em>
+    </h1>
+    <p class="hero-body">
+      Bespoke cabinetry, joinery, and furniture made by hand in the UK. 
+      Every piece is designed around your space, your taste, and your story.
+    </p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">
+        View Work
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M2 7h10M7 2l5 5-5 5"/>
+        </svg>
+      </a>
+      <a href="#process" class="btn-secondary">
+        Our Process
+        <span class="btn-arrow"></span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img 
+      src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1800&q=85" 
+      alt="Bespoke kitchen cabinetry in solid oak" 
+    />
+    <div class="hero-overlay"></div>
+    <div class="hero-badge">
+      <div class="hero-badge-num">12+</div>
+      <div class="hero-badge-label">Years Experience</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS ─── -->
+<div class="stats-strip" id="stats-strip">
+  <div class="stat-item">
+    <div class="stat-slot" aria-label="340 plus pieces crafted">
+      <span class="stat-slot-num" id="slot-0">0</span>
+      <span class="stat-suffix">+</span>
+    </div>
+    <div class="stat-label">Pieces Crafted</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-slot" aria-label="100 percent handmade in UK">
+      <span class="stat-slot-num" id="slot-1">0</span>
+      <span class="stat-suffix">%</span>
+    </div>
+    <div class="stat-label">Handmade in UK</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-slot" aria-label="5 year craftsmanship warranty">
+      <span class="stat-slot-num" id="slot-2">0</span>
+      <span class="stat-suffix">yr</span>
+    </div>
+    <div class="stat-label">Craftsmanship Warranty</div>
+  </div>
+</div>
+
+<!-- ─── ABOUT ─── -->
+<section class="about" id="about">
+  <div class="about-visual">
+    <img 
+      class="about-img-main" 
+      src="https://images.unsplash.com/photo-1504148455328-c376907d081c?w=1200&q=85" 
+      alt="Craftsman joinery work"
+      loading="lazy"
+    />
+    <img 
+      class="about-img-accent" 
+      src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=600&q=85" 
+      alt="Bespoke joinery detail"
+      loading="lazy"
+    />
+  </div>
+  <div class="about-content fade-up">
+    <span class="section-label">About the Maker</span>
+    <h2 class="about-heading">Wood that tells a <em>story.</em></h2>
+    <p class="about-body">
+      I'm Adi — a craftsman with over a decade of experience in bespoke 
+      woodworking. Every piece I make begins with listening: to the client, 
+      to the grain of the wood, to the character of the space it will inhabit.
+    </p>
+    <p class="about-body">
+      Working from my workshop in the UK, I combine traditional joinery 
+      techniques with considered modern design. No flat-pack shortcuts, 
+      no compromises on material quality.
+    </p>
+    <div class="about-divider"></div>
+    <p class="about-signature">— Adi Bespokemaker</p>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section class="services">
+  <div class="services-header">
+    <h2 class="services-heading">What I <em>craft</em> for you</h2>
+    <p class="services-intro">
+      From fitted kitchens to freestanding furniture, every commission is 
+      made to measure and made to last.
+    </p>
+  </div>
+  <div class="services-grid">
+    <div class="service-item">
+      <div class="service-num">01</div>
+      <h3 class="service-title">Cabinetry</h3>
+      <p class="service-desc">Fitted kitchens, utility rooms, and home offices designed around your exact dimensions and daily rhythm.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-num">02</div>
+      <h3 class="service-title">Joinery</h3>
+      <p class="service-desc">Staircases, window frames, doors, and architectural features that define the character of a room.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-num">03</div>
+      <h3 class="service-title">Furniture</h3>
+      <p class="service-desc">Heirloom dining tables, beds, sideboards, and shelving — furniture you'll keep and pass on.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-num">04</div>
+      <h3 class="service-title">Wardrobes</h3>
+      <p class="service-desc">Floor-to-ceiling fitted wardrobes and dressing rooms that maximise every centimetre of your space.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-num">05</div>
+      <h3 class="service-title">Home Office</h3>
+      <p class="service-desc">Built-in desks, libraries, and media walls crafted for focus, aesthetics, and storage in equal measure.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-num">06</div>
+      <h3 class="service-title">Restoration</h3>
+      <p class="service-desc">Breathing new life into antique and period pieces with sympathetic repairs and finishing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PORTFOLIO ─── -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-header">
+    <h2 class="portfolio-heading">Recent <em>Work</em></h2>
+    <div class="portfolio-filter">
+      <button class="filter-btn active" onclick="filterCards(this, 'all')">All</button>
+      <button class="filter-btn" onclick="filterCards(this, 'cabinetry')">Cabinetry</button>
+      <button class="filter-btn" onclick="filterCards(this, 'joinery')">Joinery</button>
+      <button class="filter-btn" onclick="filterCards(this, 'furniture')">Furniture</button>
+    </div>
+  </div>
+
+  <!-- EXPANDABLE CARDS COMPONENT -->
+  <div class="cards" id="portfolio-cards">
+
+    <div class="card" data-category="cabinetry">
+      <a href="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=85" target="_blank" rel="noopener noreferrer">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=85" alt="Handmade bespoke cabinetry" loading="lazy" />
+        <div class="card-title">Hartwell Kitchen</div>
+        <p class="card-desc">
+          <span class="card-category">Cabinetry</span>
+          Solid white oak handleless kitchen with hand-cut dovetail drawer boxes and soft-close hardware.
+        </p>
+      </a>
+    </div>
+
+    <div class="card" data-category="joinery">
+      <a href="https://images.unsplash.com/photo-1564540583246-934409427776?w=900&q=85" target="_blank" rel="noopener noreferrer">
+        <img src="https://images.unsplash.com/photo-1564540583246-934409427776?w=900&q=85" alt="Bespoke joinery and doors" loading="lazy" />
+        <div class="card-title">Georgian Staircase</div>
+        <p class="card-desc">
+          <span class="card-category">Joinery</span>
+          Period-faithful staircase restoration in aged oak with hand-turned balusters and a swept handrail.
+        </p>
+      </a>
+    </div>
+
+    <div class="card" data-category="furniture">
+      <a href="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=85" target="_blank" rel="noopener noreferrer">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=85" alt="Handcrafted bespoke furniture" loading="lazy" />
+        <div class="card-title">Walnut Dining Table</div>
+        <p class="card-desc">
+          <span class="card-category">Furniture</span>
+          Live-edge European walnut dining table with a trestle base in blackened steel. Seats ten comfortably.
+        </p>
+      </a>
+    </div>
+
+    <div class="card" data-category="cabinetry">
+      <a href="https://images.unsplash.com/photo-1616627561950-9f746e330187?w=900&q=85" target="_blank" rel="noopener noreferrer">
+        <img src="https://images.unsplash.com/photo-1616627561950-9f746e330187?w=900&q=85" alt="Fitted cabinetry and base units" loading="lazy" />
+        <div class="card-title">Pemberton Wardrobes</div>
+        <p class="card-desc">
+          <span class="card-category">Cabinetry</span>
+          Floor-to-ceiling fitted wardrobes in Farrow &amp; Ball-painted frames with solid oak interiors and brass hardware.
+        </p>
+      </a>
+    </div>
+
+    <div class="card" data-category="furniture">
+      <a href="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=85" target="_blank" rel="noopener noreferrer">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=85" alt="Bespoke furniture and shelving" loading="lazy" />
+        <div class="card-title">Library Wall</div>
+        <p class="card-desc">
+          <span class="card-category">Furniture</span>
+          A full wall of built-in bookshelving with a rolling library ladder, finished in deep green with aged brass fittings.
+        </p>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PROCESS ─── -->
+<div class="process" id="process">
+  <div class="process-scroll-outer" id="process-scroll-outer">
+    <div class="process-sticky" id="process-sticky">
+
+      <div class="process-header">
+        <span class="section-label">How It Works</span>
+        <h2 class="process-heading">From first sketch to <em>finished piece.</em></h2>
+      </div>
+
+      <div class="process-progress-bar">
+        <div class="process-progress-fill" id="process-progress-fill"></div>
+      </div>
+
+      <div class="process-steps-track" id="process-steps-track">
+        <div class="process-step is-active">
+          <div class="step-dot">01</div>
+          <h3 class="step-title">Consultation</h3>
+          <p class="step-desc">We meet at your space. I listen, sketch, and measure. No jargon, no pressure — just an honest conversation about what you want.</p>
+          <p class="process-step-counter"><span>01</span> / 08</p>
+        </div>
+        <div class="process-step">
+          <div class="step-dot">02</div>
+          <h3 class="step-title">Site Survey</h3>
+          <p class="step-desc">Precise measurements of every wall, alcove, and awkward angle. Accuracy here means nothing needs adjusting at installation.</p>
+          <p class="process-step-counter"><span>02</span> / 08</p>
+        </div>
+        <div class="process-step">
+          <div class="step-dot">03</div>
+          <h3 class="step-title">Design &amp; Quote</h3>
+          <p class="step-desc">Detailed drawings and a clear, fixed quote. You see exactly what you're getting before a single tool is lifted.</p>
+          <p class="process-step-counter"><span>03</span> / 08</p>
+        </div>
+        <div class="process-step">
+          <div class="step-dot">04</div>
+          <h3 class="step-title">Material Selection</h3>
+          <p class="step-desc">We choose the timber together — species, grain direction, finish. Every material decision is made with longevity and beauty in equal measure.</p>
+          <p class="process-step-counter"><span>04</span> / 08</p>
+        </div>
+        <div class="process-step">
+          <div class="step-dot">05</div>
+          <h3 class="step-title">Workshop Build</h3>
+          <p class="step-desc">Work begins in my workshop using quality UK-sourced timber. Traditional joinery techniques — no shortcuts, no flat-pack compromises.</p>
+          <p class="process-step-counter"><span>05</span> / 08</p>
+        </div>
+        <div class="process-step">
+          <div class="step-dot">06</div>
+          <h3 class="step-title">Finishing</h3>
+          <p class="step-desc">Hand-sanding, priming, painting or oiling — depending on the species and look you've chosen. The finish is what the eye sees first.</p>
+          <p class="process-step-counter"><span>06</span> / 08</p>
+        </div>
+        <div class="process-step">
+          <div class="step-dot">07</div>
+          <h3 class="step-title">Installation</h3>
+          <p class="step-desc">I fit everything myself. No subcontracting, no strangers in your home. The same hands that built it fit it.</p>
+          <p class="process-step-counter"><span>07</span> / 08</p>
+        </div>
+        <div class="process-step">
+          <div class="step-dot">08</div>
+          <h3 class="step-title">Aftercare</h3>
+          <p class="step-desc">A 5-year warranty on all work. If anything isn't right, I come back and fix it — no quibble, no charge. That's the promise.</p>
+          <p class="process-step-counter"><span>08</span> / 08</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ─── GALLERY LOADER ─── -->
+<div class="gallery-loader" id="gallery-loader" aria-live="polite">
+  <p class="gallery-loader-title">The Work</p>
+  <p class="gallery-loader-pct" id="gallery-loader-pct">Loading&hellip;</p>
+</div>
+
+<!-- ─── GALLERY SCROLL ─── -->
+<div class="gallery-wrapper" id="gallery" aria-label="Portfolio gallery">
+
+  <div class="gallery-intro">
+    <div class="gallery-intro-inner">
+      <div>
+        <span class="section-label">The Work</span>
+        <h2 class="gallery-heading">Every piece, <em>in detail.</em></h2>
+      </div>
+      <span class="gallery-hint">Scroll to explore</span>
+    </div>
+  </div>
+
+  <!-- Text band 1 -->
+  <section class="demo-text">
+    <div class="wrapper text">Cabinetry &nbsp;&nbsp; Joinery &nbsp;&nbsp; Furniture &nbsp;&nbsp; Other &nbsp;&nbsp; Cabinetry &nbsp;&nbsp; Joinery &nbsp;&nbsp; Furniture &nbsp;&nbsp; Other &nbsp;&nbsp;</div>
+  </section>
+
+  <!-- Row 1: Cabinetry -->
+  <section class="demo-gallery">
+    <ul class="wrapper">
+      <li>
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=85" alt="Bespoke cabinetry" />
+        <p class="gallery-img-label">Cabinetry</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=900&q=80" alt="Cabinet detail" />
+        <p class="gallery-img-label">Cabinetry</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1800&q=85" alt="Fitted kitchen units" />
+        <p class="gallery-img-label">Cabinetry</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1616627561950-9f746e330187?w=900&q=85" alt="Base unit cabinetry" />
+      <li>
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80" alt="Cabinetry" />
+        <p class="gallery-img-label">Cabinetry</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=900&q=80" alt="Cabinetry" />
+        <p class="gallery-img-label">Cabinetry</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=900&q=80" alt="Cabinetry" />
+        <p class="gallery-img-label">Cabinetry</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=900&q=80" alt="Cabinetry" />
+        <p class="gallery-img-label">Cabinetry</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1603796846097-bee99e4a601f?w=900&q=80" alt="Cabinetry" />
+        <p class="gallery-img-label">Cabinetry</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=900&q=80" alt="Cabinetry" />
+        <p class="gallery-img-label">Cabinetry</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=900&q=80" alt="Cabinetry" />
+        <p class="gallery-img-label">Cabinetry</p>
+      </li>
+            <p class="gallery-img-label">Cabinetry</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Row 2: Joinery -->
+  <section class="demo-gallery">
+    <ul class="wrapper">
+      <li>
+        <img src="https://images.unsplash.com/photo-1564540583246-934409427776?w=900&q=85" alt="Custom door joinery" />
+        <p class="gallery-img-label">Joinery</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80" alt="Joinery installation" />
+        <p class="gallery-img-label">Joinery</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?w=900&q=80" alt="Joinery work" />
+        <p class="gallery-img-label">Joinery</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=900&q=80" alt="Handmade joinery" />
+      <li>
+        <img src="https://images.unsplash.com/photo-1574180566232-aaad1b5b8450?w=900&q=80" alt="Joinery" />
+        <p class="gallery-img-label">Joinery</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?w=1200&q=85" alt="Joinery" />
+        <p class="gallery-img-label">Joinery</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1567538096621-38d2284b23ff?w=900&q=80" alt="Joinery" />
+        <p class="gallery-img-label">Joinery</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=900&q=80" alt="Joinery" />
+        <p class="gallery-img-label">Joinery</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=900&q=80" alt="Joinery" />
+        <p class="gallery-img-label">Joinery</p>
+      </li>
+            <p class="gallery-img-label">Joinery</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Row 3: Furniture -->
+  <section class="demo-gallery">
+    <ul class="wrapper">
+      <li>
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=85" alt="Bespoke furniture" />
+        <p class="gallery-img-label">Furniture</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=85" alt="Furniture piece" />
+        <p class="gallery-img-label">Furniture</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=900&q=80" alt="Handcrafted furniture" />
+      <li>
+        <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=900&q=80" alt="Furniture" />
+        <p class="gallery-img-label">Furniture</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=900&q=80" alt="Furniture" />
+        <p class="gallery-img-label">Furniture</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=900&q=80" alt="Furniture" />
+        <p class="gallery-img-label">Furniture</p>
+      </li>
+            <p class="gallery-img-label">Furniture</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Row 4: Other -->
+  <section class="demo-gallery last">
+    <ul class="wrapper">
+      <li>
+        <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=900&q=80" alt="Other woodwork" />
+        <p class="gallery-img-label">Other</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1609234656432-603dc5876c18?w=900&q=80" alt="Woodwork project" />
+        <p class="gallery-img-label">Other</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=900&q=80" alt="Other craft work" />
+      <li>
+        <img src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=900&q=80" alt="Other" />
+        <p class="gallery-img-label">Other</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=900&q=80" alt="Other" />
+        <p class="gallery-img-label">Other</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=900&q=80" alt="Other" />
+        <p class="gallery-img-label">Other</p>
+      </li>
+      <li>
+        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&q=80" alt="Other" />
+        <p class="gallery-img-label">Other</p>
+      </li>
+            <p class="gallery-img-label">Other</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Text band 2 -->
+  <section class="demo-text">
+    <div class="wrapper text">Handmade in the UK &nbsp;&nbsp; Bespoke &nbsp;&nbsp; Timeless &nbsp;&nbsp; Crafted &nbsp;&nbsp; Handmade in the UK &nbsp;&nbsp; Bespoke &nbsp;&nbsp; Timeless &nbsp;&nbsp; Crafted &nbsp;&nbsp;</div>
+  </section>
+
+</div>
+
+<!-- ─── TESTIMONIAL TICKER ─── -->
+<section class="ticker-section" aria-label="Client testimonials">
+  <p class="ticker-label">What clients say</p>
+  <div class="ticker-track" role="marquee" aria-live="off">
+
+    <!-- Set A -->
+    <div class="ticker-set">
+      <div class="ticker-item">
+        <span class="ticker-quote-mark" aria-hidden="true">"</span>
+        <div>
+          <p class="ticker-text">Adi built us a kitchen we'll have for the rest of our lives. Every drawer, every hinge, every detail is exactly right. Our friends assume it's from a high-end showroom.</p>
+          <div class="ticker-attribution">
+            <span class="ticker-dash"></span>
+            <span class="ticker-name"><span>Sarah &amp; Tom H.</span> · Berkshire</span>
+          </div>
+        </div>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-quote-mark" aria-hidden="true">"</span>
+        <div>
+          <p class="ticker-text">He came, listened properly, and designed something we couldn't have imagined ourselves. The walnut dining table is genuinely one of the most beautiful things we own.</p>
+          <div class="ticker-attribution">
+            <span class="ticker-dash"></span>
+            <span class="ticker-name"><span>James M.</span> · Oxfordshire</span>
+          </div>
+        </div>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-quote-mark" aria-hidden="true">"</span>
+        <div>
+          <p class="ticker-text">The staircase he restored has transformed our hallway entirely. Adi worked with complete respect for the period features of the house. An exceptional craftsman.</p>
+          <div class="ticker-attribution">
+            <span class="ticker-dash"></span>
+            <span class="ticker-name"><span>Caroline &amp; Peter R.</span> · Surrey</span>
+          </div>
+        </div>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-quote-mark" aria-hidden="true">"</span>
+        <div>
+          <p class="ticker-text">The fitted wardrobes are incredible — the craftsmanship is a cut above anything from the high street. Exactly what we asked for and then some.</p>
+          <div class="ticker-attribution">
+            <span class="ticker-dash"></span>
+            <span class="ticker-name"><span>Rachel &amp; Oliver P.</span> · Hampshire</span>
+          </div>
+        </div>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-quote-mark" aria-hidden="true">"</span>
+        <div>
+          <p class="ticker-text">We've had tradespeople let us down before, but Adi was the opposite — on time, transparent with costs, and the finished library wall is beyond what we imagined.</p>
+          <div class="ticker-attribution">
+            <span class="ticker-dash"></span>
+            <span class="ticker-name"><span>David K.</span> · Wiltshire</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Set B — exact duplicate for seamless loop -->
+    <div class="ticker-set" aria-hidden="true">
+      <div class="ticker-item">
+        <span class="ticker-quote-mark">"</span>
+        <div>
+          <p class="ticker-text">Adi built us a kitchen we'll have for the rest of our lives. Every drawer, every hinge, every detail is exactly right. Our friends assume it's from a high-end showroom.</p>
+          <div class="ticker-attribution">
+            <span class="ticker-dash"></span>
+            <span class="ticker-name"><span>Sarah &amp; Tom H.</span> · Berkshire</span>
+          </div>
+        </div>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-quote-mark">"</span>
+        <div>
+          <p class="ticker-text">He came, listened properly, and designed something we couldn't have imagined ourselves. The walnut dining table is genuinely one of the most beautiful things we own.</p>
+          <div class="ticker-attribution">
+            <span class="ticker-dash"></span>
+            <span class="ticker-name"><span>James M.</span> · Oxfordshire</span>
+          </div>
+        </div>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-quote-mark">"</span>
+        <div>
+          <p class="ticker-text">The staircase he restored has transformed our hallway entirely. Adi worked with complete respect for the period features of the house. An exceptional craftsman.</p>
+          <div class="ticker-attribution">
+            <span class="ticker-dash"></span>
+            <span class="ticker-name"><span>Caroline &amp; Peter R.</span> · Surrey</span>
+          </div>
+        </div>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-quote-mark">"</span>
+        <div>
+          <p class="ticker-text">The fitted wardrobes are incredible — the craftsmanship is a cut above anything from the high street. Exactly what we asked for and then some.</p>
+          <div class="ticker-attribution">
+            <span class="ticker-dash"></span>
+            <span class="ticker-name"><span>Rachel &amp; Oliver P.</span> · Hampshire</span>
+          </div>
+        </div>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-quote-mark">"</span>
+        <div>
+          <p class="ticker-text">We've had tradespeople let us down before, but Adi was the opposite — on time, transparent with costs, and the finished library wall is beyond what we imagined.</p>
+          <div class="ticker-attribution">
+            <span class="ticker-dash"></span>
+            <span class="ticker-name"><span>David K.</span> · Wiltshire</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section class="contact" id="contact">
+
+  <!-- Left: editorial headline + meta -->
+  <div class="contact-left fade-up">
+    <div>
+      <span class="section-label">Get In Touch</span>
+      <h2 class="contact-heading">Have a project<br />in mind?<br />Let's <em>talk.</em></h2>
+    </div>
+    <div class="contact-meta">
+      <div class="contact-meta-line">hello@adibespokewoodworking.com</div>
+      <div class="contact-meta-line">Berkshire, United Kingdom</div>
+      <div class="contact-meta-line">Responds within 2 working days</div>
+    </div>
+  </div>
+
+  <!-- Right: the form -->
+  <div class="contact-form" id="contact-form-wrap">
+    <div id="form-inner">
+      <p class="form-heading">Start your project</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">First name</label>
+          <input type="text" id="fname" placeholder="James" autocomplete="given-name" />
+        </div>
+        <div class="form-group">
+          <label for="lname">Last name</label>
+          <input type="text" id="lname" placeholder="Mitchell" autocomplete="family-name" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" id="email" placeholder="james@example.co.uk" autocomplete="email" />
+      </div>
+
+      <div class="form-group">
+        <label for="service">Type of work</label>
+        <select id="service">
+          <option value="" disabled selected>Select a service…</option>
+          <option value="cabinetry">Cabinetry</option>
+          <option value="joinery">Joinery</option>
+          <option value="furniture">Furniture</option>
+          <option value="wardrobes">Fitted Wardrobes</option>
+          <option value="home-office">Home Office</option>
+          <option value="restoration">Restoration</option>
+          <option value="other">Other / Not sure yet</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Tell me about your project</label>
+        <textarea id="message" placeholder="Describe your space, vision, or any specific requirements…"></textarea>
+      </div>
+
+      <button class="form-submit" onclick="handleSubmit(event)">
+        Send enquiry
+        <span class="form-submit-arrow">→</span>
+      </button>
+      <p class="form-note">No obligation. I respond within 2 working days.</p>
+    </div>
+
+    <div class="form-success" id="form-success">
+      <div class="success-icon">
+        <svg viewBox="0 0 22 22"><path d="M4 11l5 5 9-9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 class="success-heading">Enquiry received.</h3>
+      <p class="success-body">Thank you — I'll review your project and be in touch within two working days.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Adi<span>.</span>Bespoke</div>
+      <p class="footer-tagline">Handmade cabinetry, joinery &amp; furniture crafted in the UK. Built for a lifetime.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#portfolio">Cabinetry</a></li>
+        <li><a href="#portfolio">Joinery</a></li>
+        <li><a href="#portfolio">Furniture</a></li>
+        <li><a href="#portfolio">Wardrobes</a></li>
+        <li><a href="#portfolio">Restoration</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Follow</div>
+      <div class="social-links" style="flex-direction:column; align-items:flex-start; gap:6px;">
+        <a href="https://www.instagram.com/adi_bespoke_woodworking_/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram" style="width:auto;gap:10px;padding:0 12px;font-size:13px;color:rgba(250,248,245,0.5);">
+          <svg viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="3"/><circle cx="8" cy="8" r="3"/><circle cx="11.5" cy="4.5" r="0.75" fill="rgba(250,248,245,0.5)" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.facebook.com/WixStudio" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook" style="width:auto;gap:10px;padding:0 12px;font-size:13px;color:rgba(250,248,245,0.5);">
+          <svg viewBox="0 0 16 16"><path d="M9 6V4.5A1.5 1.5 0 0110.5 3H12V5.5h-1.5A.5.5 0 0010 6v2h2l-.5 2.5H10V16H7.5V10.5H6V8h1.5V6H9z"/></svg>
+          Facebook
+        </a>
+        <a href="https://www.youtube.com/channel/UCPf4eLCrzPt3A9evET4QSLQ" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube" style="width:auto;gap:10px;padding:0 12px;font-size:13px;color:rgba(250,248,245,0.5);">
+          <svg viewBox="0 0 16 16"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M6.5 5.5l5 2.5-5 2.5z" fill="rgba(250,248,245,0.5)" stroke="none"/></svg>
+          YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="copyright">
+      © 2026 <span class="author-name">Adi Bespoke Woodworking</span> · 
+      <a href="https://fthyldz.com" target="_blank" rel="noopener noreferrer" class="author-link">
+        fthyldz.com
+      </a>
+    </p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/adi_bespoke_woodworking_/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+        <svg viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="3"/><circle cx="8" cy="8" r="3"/><circle cx="11.5" cy="4.5" r="0.75" fill="rgba(250,248,245,0.5)" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/WixStudio" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+        <svg viewBox="0 0 16 16"><path d="M9 6V4.5A1.5 1.5 0 0110.5 3H12V5.5h-1.5A.5.5 0 0010 6v2h2l-.5 2.5H10V16H7.5V10.5H6V8h1.5V6H9z"/></svg>
+      </a>
+      <a href="https://www.threads.net/@adi_bespoke_woodworking_" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Threads">
+        <svg viewBox="0 0 16 16"><path d="M8 2c-3.3 0-5.5 2.2-5.5 5 0 3 2 5 5.5 5s5.5-2 5.5-5m-4.5 0c1 0 2.5.5 3 2M8 7c-1 0-2.5.5-2.5 2s1.5 2 2.5 2 2.5-.8 2.5-2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Intersection observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ─── COUNT-UP ANIMATION ──────────────────────────────────────────────────
+  const stats = [
+    { id: 'slot-0', target: 340, duration: 1800 },
+    { id: 'slot-1', target: 100, duration: 1600 },
+    { id: 'slot-2', target: 5,   duration: 1200 },
+  ];
+
+  function countUp(el, target, duration) {
+    const start = performance.now();
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      el.textContent = Math.round(easeOut(progress) * target);
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  let statsFired = false;
+  const statsObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !statsFired) {
+      statsFired = true;
+      stats.forEach(({ id, target, duration }) => {
+        countUp(document.getElementById(id), target, duration);
+      });
+      statsObserver.disconnect();
+    }
+  }, { threshold: 0.4 });
+
+  statsObserver.observe(document.getElementById('stats-strip'));
+
+  // Portfolio filter — collapse non-matching cards in flex layout
+  function filterCards(btn, category) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#portfolio-cards .card').forEach(card => {
+      const match = category === 'all' || card.dataset.category === category;
+      card.style.flex = match ? '' : '0';
+      card.style.minWidth = match ? '' : '0';
+      card.style.opacity = match ? '' : '0';
+      card.style.pointerEvents = match ? '' : 'none';
+      card.style.border = match ? '' : 'none';
+    });
+  }
+
+  // Form submission
+  function handleSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const fname = document.getElementById('fname').value;
+    if (!fname || !email) {
+      document.getElementById('fname').style.borderColor = fname ? '#B8965A' : '#c0392b';
+      document.getElementById('email').style.borderColor = email ? '#B8965A' : '#c0392b';
+      return;
+    }
+    document.getElementById('form-inner').style.display = 'none';
+    const success = document.getElementById('form-success');
+    success.style.display = 'flex';
+  }
+
+  // Sticky nav shadow on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.borderBottomColor = window.scrollY > 40 
+      ? 'rgba(26,23,20,0.1)' 
+      : 'rgba(26,23,20,0.06)';
+  }, { passive: true });
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  const galleryImgs  = gsap.utils.toArray('#gallery img');
+  const loaderEl     = document.getElementById('gallery-loader');
+  const loaderPct    = document.getElementById('gallery-loader-pct');
+
+  // Show loader only when gallery is about to scroll into view
+  loaderEl.style.display = 'none';
+
+  const updateProgress = (instance) => {
+    const pct = Math.round(instance.progressedCount * 100 / galleryImgs.length);
+    loaderPct.textContent = pct + '%';
+  };
+
+  const showGallery = () => {
+    // Fade out loader
+    gsap.to(loaderEl, {
+      autoAlpha: 0,
+      duration: 0.6,
+      onComplete: () => { loaderEl.style.display = 'none'; }
+    });
+
+    // Wire up each section with ScrollTrigger horizontal scrub
+    gsap.utils.toArray('#gallery section').forEach((section, index) => {
+      const w = section.querySelector('.wrapper');
+      if (!w) return;
+      const isOdd = index % 2 === 1;
+      const xStart = isOdd ? '100%'               : -(w.scrollWidth - section.offsetWidth) + 'px';
+      const xEnd   = isOdd ? -(w.scrollWidth - section.offsetWidth) + 'px' : '0%';
+      gsap.fromTo(w,
+        { x: xStart },
+        {
+          x: xEnd,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            scrub: 0.5,
+          }
+        }
+      );
+    });
+  };
+
+  // Trigger loader + init when gallery scrolls near viewport
+  const gallerySection = document.getElementById('gallery');
+  const galleryReveal = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      loaderEl.style.display = 'flex';
+      gsap.set(loaderEl, { autoAlpha: 1 });
+      imagesLoaded(galleryImgs)
+        .on('progress', updateProgress)
+        .on('always', showGallery);
+      galleryReveal.disconnect();
+    }
+  }, { rootMargin: '200px' });
+
+  galleryReveal.observe(gallerySection);
+
+  // ─── PROCESS HORIZONTAL SCROLL ───────────────────────────────────────────
+  (function () {
+    const outer   = document.getElementById('process-scroll-outer');
+    const track   = document.getElementById('process-steps-track');
+    const fill    = document.getElementById('process-progress-fill');
+    const steps   = track.querySelectorAll('.process-step');
+    if (!outer || !track) return;
+
+    // Give the outer wrapper enough scroll distance:
+    // 100vh (the sticky panel itself) + travel distance for the track
+    function setup() {
+      const trackW    = track.scrollWidth;
+      const viewW     = window.innerWidth - 96; // subtract side padding
+      const travelPx  = Math.max(trackW - viewW, 0);
+      // Total outer height = viewport + scroll travel + breathing room
+      outer.style.height = (window.innerHeight + travelPx * 2.2) + 'px';
+
+      ScrollTrigger.create({
+        trigger: outer,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.8,
+        onUpdate(self) {
+          const progress = self.progress;
+          // Slide the track leftward
+          gsap.set(track, { x: -(progress * travelPx) });
+          // Drive the gold progress bar
+          fill.style.width = (progress * 100) + '%';
+          // Highlight the active step dot
+          const activeIndex = Math.min(
+            Math.floor(progress * steps.length),
+            steps.length - 1
+          );
+          steps.forEach((step, i) => {
+            step.classList.toggle('is-active', i <= activeIndex);
+          });
+        }
+      });
+    }
+
+    // Run after GSAP + fonts ready
+    if (typeof ScrollTrigger !== 'undefined') {
+      setup();
+      window.addEventListener('resize', () => {
+        ScrollTrigger.getAll().forEach(t => {
+          if (t.trigger === outer) t.kill();
+        });
+        setup();
+      });
+    }
+  })();
+</script>
+</body>
+</html>
